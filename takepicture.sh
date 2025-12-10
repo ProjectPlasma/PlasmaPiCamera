@@ -6,7 +6,7 @@ while getopts "s:g:" opt; do
         s) shutter="$OPTARG" ;;
         g) gain="$OPTARG" ;;
         *)
-            echo "Usage: $0 <filename-prefix> -s <shutter_speed> -g <gain>"
+            echo "Usage: $0 -s <shutter_speed> -g <gain> <filename-prefix> "
             exit 1
             ;;
     esac
@@ -18,9 +18,9 @@ shift $((OPTIND - 1))
 # Remaining argument is the filename prefix, e.g. "image"
 filename="$1"
 
-# Validate
+# Validates
 if [ -z "$shutter" ] || [ -z "$gain" ] || [ -z "$filename" ]; then
-    echo "Usage: $0 -s <shutter_speed> -g <gain> <filename>"
+    echo "Usage: $0 -s <shutter_speed> -g <gain> <filename-prefix>"
     exit 1
 fi
 
@@ -34,7 +34,7 @@ rpicam-still --raw \
     --shutter "$shutter" \
     -n --immediate
 
-# List files and open result
-ls -rtlh
+#Open result
 open "${filename}_${date}.jpg"
+
 
