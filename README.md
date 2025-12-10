@@ -1,4 +1,4 @@
-# PlasaPiCamera
+# PlasmaPiCamera
 Repo for rasberry Pi camera software.
 
 ## Usage
